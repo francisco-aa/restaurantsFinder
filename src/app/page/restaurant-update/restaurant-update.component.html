@@ -1,0 +1,121 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header"><h4 class="card-title">{{title}}<i *ngIf="loading" class="ft-loader spinner ml-1"></i>
+      </h4></div>
+      <div class="card-body">
+        <form class="form form-horizontal" [formGroup]="restaurantForm" (ngSubmit)="onSubmit()">
+          <div class="row" *ngIf="!loading">
+            <div class="col-12">
+              <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                  <label>Name* :</label>
+                </div>
+                <div class="col-sm-10">
+                  <input type="text" id="name-id" class="form-control" name="name-id" required
+                         [ngClass]="{ 'is-invalid': (submitted || controls.name.touched || controls.name.dirty ) && controls.name.errors?.required}"
+                         formControlName="name"
+                         placeholder="Name"/>
+                  <small
+                    *ngIf="(submitted || controls.name.touched || controls.name.dirty ) && controls.name.errors?.required">
+                    <span class="text-danger">This field is required.</span>
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                  <label>Address* :</label>
+                </div>
+                <div class="col-sm-10">
+                  <input type="text" id="email-id" class="form-control" name="address-id"
+                         [ngClass]="{ 'is-invalid': (submitted || controls.address.touched || controls.address.dirty ) && controls.address.errors?.required}"
+                         required
+                         formControlName="address"
+                         placeholder="Address"/>
+                  <small
+                    *ngIf="(submitted || controls.address.touched || controls.address.dirty ) && controls.address.errors?.required">
+                    <span class="text-danger">This field is required.</span>
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                  <label>City* :</label>
+                </div>
+                <div class="col-sm-10">
+                  <input type="text" id="city-id" class="form-control" name="city-id"
+                         [ngClass]="{ 'is-invalid': (submitted || controls.city.touched || controls.city.dirty ) && controls.city.errors?.required}"
+                         required
+                         formControlName="city"
+                         placeholder="City"/>
+                  <small
+                    *ngIf="(submitted || controls.city.touched || controls.city.dirty ) && controls.city.errors?.required">
+                    <span class="text-danger">This field is required.</span>
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                  <label>Category* :</label>
+                </div>
+                <div class="col-sm-10">
+                  <!--<ng-select (open)="loadCategories()"
+                             [closeOnSelect]="true"
+                             [items]="categories"
+                             [loading]="loadingCategories"
+                             [multiple]="false"
+                             bindLabel="name"
+                             bindValue="id"
+                             id="category"
+                             appendTo="body"
+                             loadingText="Loading ..."
+                             formControlName="category"
+                             notFoundText="No results"
+                             placeholder="Select one category"
+                             required>
+                  </ng-select>-->
+                  <select class="form-control" formControlName="category">
+                    <option *ngFor="let c of categories" [value]="c.id">{{c.name}}</option>
+                  </select>
+                  <small
+                    *ngIf="(submitted || controls.category.touched || controls.category.dirty ) && controls.category.errors?.required">
+                    <span class="text-danger">This field is required.</span>
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                  <label>Rating* :</label>
+                </div>
+                <div class="col-sm-10">
+                  <input type="number" id="city-id" class="form-control" name="city-id"
+                         [ngClass]="{ 'is-invalid': (submitted || controls.city.touched || controls.city.dirty ) && controls.city.errors?.required}"
+                         required
+                         formControlName="rating"
+                         placeholder="Please pick a rating from 0 to 5"
+                         min="0" max="5"/>
+                  <small
+                    *ngIf="(submitted || controls.rating.touched || controls.rating.dirty ) && controls.rating.errors?.required">
+                    <span class="text-danger">This field is required.</span>
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 form-actions right">
+              <button type="submit" rippleEffect class="btn btn-primary mr-1">Submit</button>
+              <button type="reset" rippleEffect class="btn btn-outline-secondary mr-2">Reset</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
