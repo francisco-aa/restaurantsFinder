@@ -130,7 +130,6 @@ export class RestaurantUpdateComponent implements OnInit {
           this.restaurant = a;
           this.loading = false;
           this.router.navigate(['list']);
-          console.log('list')
         },
         error => {
           console.log(error);
