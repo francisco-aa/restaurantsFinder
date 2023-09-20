@@ -2,7 +2,7 @@ import { RouteInfo } from '../vertical-menu/vertical-menu.metadata';
 
 export const HROUTES: RouteInfo[] = [
   {
-    path: '/page', title: 'Page', icon: 'ft-home', class: 'dropdown nav-item', isExternalLink: false, submenu: []
+    path: '/pages', title: 'Page', icon: 'ft-home', class: 'dropdown nav-item', isExternalLink: false, submenu: []
   },
   {
     path: '', title: 'Menu Levels', icon: 'ft-align-left', class: 'dropdown nav-item has-sub', badge: '', badgeClass: '', isExternalLink: false,

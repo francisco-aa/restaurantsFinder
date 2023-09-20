@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header"><h4 class="card-title"><i class="ft-chevrons-right mr-1"></i>Restaurants
+        <i class="ft-plus ml-1 cursor-pointer" (click)="addRestaurant()" [ngbTooltip]="'Add new restaurant'"></i>
+        <i *ngIf="loading" class="ft-loader spinner ml-1"></i></h4></div>
+      <div class="card-body">
+        <div class="table-responsive" *ngIf="!loading">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Actions</th>
+              <th>Name</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>Category</th>
+              <th>Rating</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let r of restaurants">
+              <td>
+                <i class="ft-edit mr-2 cursor-pointer text-info" [ngbTooltip]="'Update'"
+                   (click)="updateRestaurant(r)"></i>
+                <i class="ft-delete cursor-pointer text-danger" [ngbTooltip]="'Delete'"
+                   (click)="deleteRestaurant(r)"></i>
+              </td>
+              <td>{{r?.name}}</td>
+              <td>{{r?.address}}</td>
+              <td>{{r?.city}}</td>
+              <td>{{r?.category.name}}</td>
+              <td>
+                <p *ngIf="r.rating === 1">
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                </p>
+                <p *ngIf="r.rating === 2">
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                </p>
+                <p *ngIf="r.rating === 3">
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                </p>
+                <p *ngIf="r.rating === 4">
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                </p>
+                <p *ngIf="r.rating === 5">
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                  <i class="ft-star-on" style="color: #ffd700"></i>
+                </p>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header"><h4 class="card-title"><i class="ft-chevrons-right mr-1"></i>Categories
+        <i class="ft-plus ml-1 cursor-pointer" (click)="addCategory()" [ngbTooltip]="'Add new categorie'"></i>
+        <i *ngIf="loading" class="ft-loader spinner ml-1"></i></h4></div>
+      <div class="card-body">
+        <div class="table-responsive" *ngIf="!loading">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Actions</th>
+              <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let c of categories">
+              <td>
+                <i class="ft-edit mr-2 cursor-pointer text-info" [ngbTooltip]="'Update'"
+                   (click)="updateCategory(c)"></i>
+                <i class="ft-delete cursor-pointer text-danger" [ngbTooltip]="'Delete'"
+                   (click)="deleteCategory(c)"></i>
+              </td>
+              <td>{{c?.name}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,33 +13,35 @@ export class RestaurantService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<RestaurantModel[]> {
-    return this.http.get<RestaurantModel[]>(this.urlBase).pipe(
+  getAll(): Observable<any[]> {
+    return this.http.get<any[]>(this.urlBase).pipe(
       map(
-        (jsonArray: Object[]) => jsonArray.map(jsonItem => RestaurantModel.fromJson(jsonItem))
+        (jsonArray: Object[]) => jsonArray.map(jsonItem => jsonItem)
       )
     );
   }
 
-  get(id): Observable<RestaurantModel> {
-    return this.http.get<RestaurantModel>(this.urlBase + '/' + id)
+  get(id): Observable<any> {
+    return this.http.get<any>(this.urlBase + '/' + id)
       .pipe(
         map(
-          a => RestaurantModel.fromJson(a)
+          a => a
         )
       );
   }
 
-  update(item): Observable<RestaurantModel> {
+  update(item): Observable<any> {
     if (item?.id) {
+      console.log('ITEM', item)
+
       return this.http.put(this.urlBase + '/' + item.id, item)
         .pipe(
-          map(a => RestaurantModel.fromJson(a))
+          map(a => a)
         )
     } else {
       return this.http.post(this.urlBase, item)
         .pipe(
-          map(a => RestaurantModel.fromJson(a))
+          map(a => a)
         )
     }
   }

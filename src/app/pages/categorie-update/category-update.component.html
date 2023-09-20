@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header"><h4 class="card-title">{{title}}<i *ngIf="loading" class="ft-loader spinner ml-1"></i>
+      </h4></div>
+      <div class="card-body">
+        <form class="form form-horizontal" [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+          <div class="row" *ngIf="!loading">
+            <div class="col-12">
+              <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                  <label>Name* :</label>
+                </div>
+                <div class="col-sm-10">
+                  <input type="text" id="name-id" class="form-control" name="name-id" required
+                         [ngClass]="{ 'is-invalid': (submitted || controls.name.touched || controls.name.dirty ) && controls.name.errors?.required}"
+                         formControlName="name"
+                         placeholder="Name"/>
+                  <small
+                    *ngIf="(submitted || controls.name.touched || controls.name.dirty ) && controls.name.errors?.required">
+                    <span class="text-danger">This field is required.</span>
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 form-actions right">
+              <button rippleEffect class="btn btn-secondary mr-1" (click)="locationBack()">Back</button>
+              <button type="reset" rippleEffect class="btn btn-danger mr-2">Reset</button>
+              <button type="submit" rippleEffect class="btn btn-primary mr-1">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

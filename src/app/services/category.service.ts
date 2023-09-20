@@ -21,24 +21,30 @@ export class CategoryService {
     );
   }
 
-  post(item): Observable<CategoryModel> {
-    return this.http.post(this.urlBase, item)
+  get(id): Observable<CategoryModel> {
+    return this.http.get<CategoryModel>(this.urlBase + '/' + id)
       .pipe(
-        map(a => CategoryModel.fromJson(a))
-      )
-  };
-
-  put(item): Observable<CategoryModel> {
-    return this.http.put(this.urlBase + '/' + item.id, item)
-      .pipe(
-        map(a => CategoryModel.fromJson(a))
-      )
+        map(
+          a => CategoryModel.fromJson(a)
+        )
+      );
   }
 
-  delete(item): Observable<CategoryModel> {
-    return this.http.delete(this.urlBase + '/' + item.id)
-      .pipe(
-        map(a => CategoryModel.fromJson(a))
-      )
+  update(item): Observable<CategoryModel> {
+    if (item?.id) {
+      return this.http.put(this.urlBase + '/' + item.id, item)
+        .pipe(
+          map(a => CategoryModel.fromJson(a))
+        )
+    } else {
+      return this.http.post(this.urlBase, item)
+        .pipe(
+          map(a => CategoryModel.fromJson(a))
+        )
+    }
+  }
+
+  delete(item) {
+    return this.http.delete(this.urlBase + '/' + item.id);
   }
 }

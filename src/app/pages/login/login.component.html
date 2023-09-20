@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-6 mx-auto mt-3">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title"><i class="ft-log-in mr-2"></i>{{"Connexion"}}</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-12">
+              <label for="username" class="text-primary">Username *</label>
+              <input type="username" formControlName="username"
+                     id="username"
+                     class="form-control"
+                     [ngClass]="{ 'is-invalid': (controls.username.value !== '' || controls.username.touched || controls.username.dirty) && (controls.username.errors?.required),
+                           'is-valid': controls.username.value !== '' && (!controls.username.errors?.required) }"
+                     placeholder="Username"
+                     required>
+              <small
+                *ngIf="(submitted || controls.username.touched || controls.username.dirty ) && controls.username.errors?.required">
+                <span class="text-danger">{{"Ce champs est requis."}}</span>
+              </small>
+            </div>
+            <div class="col-md-12 mt-1">
+              <label for="password" class="text-primary">Password *</label>
+              <input type="password" formControlName="password" class="form-control"
+                     id="password"
+                     placeholder="Mot de passe"
+                     [ngClass]="{ 'is-invalid': submitted && controls.password.invalid, 'is-valid': submitted && !controls.password.invalid }"
+                     required>
+              <div *ngIf="submitted && (controls.password.invalid || controls.password.errors?.required)"
+                   class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i>Ce champs est
+                requis.
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 pull-right">
+            <button class="btn btn-primary" (click)="onSubmit()" [disabled]="loginForm.invalid">Se connecter</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

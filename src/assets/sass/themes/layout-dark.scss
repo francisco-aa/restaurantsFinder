@@ -154,7 +154,7 @@
     color: $bg-color-dark !important;
   }
 
-  // card box shadow on page scrolled for main navbar
+  // card box shadow on pages scrolled for main navbar
   &.vertical-layout.navbar-sticky.page-scrolled {
     nav.header-navbar {
       @include card-shadow();
@@ -1532,7 +1532,7 @@ td.fc-other-month.fc-past:not([class*=fc-day-top]) {
   }
 }
 
-// Search page
+// Search pages
 .search-wrapper {
   .page-search-input input,
   .video-result-swiper .swiper-slide {
@@ -1547,7 +1547,7 @@ td.fc-other-month.fc-past:not([class*=fc-day-top]) {
   }
 }
 
-// Knowledge Base page
+// Knowledge Base pages
 .kb-wrapper {
   .kb-search-input input {
     @include transparent-style() {
@@ -1789,7 +1789,7 @@ body {
       }
     }
 
-    // media player page css
+    // media player pages css
     .media-wrapper {
       .plyr--audio {
         .plyr__controls {
@@ -1800,7 +1800,7 @@ body {
       }
     }
 
-    // treeview page css
+    // treeview pages css
     .bootstraptreeview {
       .colorful-treeview {
         .list-group {
@@ -1913,7 +1913,7 @@ body {
       stroke: rgba($white, 0.22);
     }
 
-    // users view page css
+    // users view pages css
     .users-view {
       .table-borderless {
         td {

@@ -23,7 +23,7 @@ export class ContentLayoutComponent implements OnInit, OnDestroy {
     private customizerService: CustomizerService
   ) {
     this.config = this.configService.templateConf;
-    this.renderer.addClass(this.document.body, "auth-page");
+    this.renderer.addClass(this.document.body, "auth-pages");
   }
 
   ngOnInit() {
@@ -59,7 +59,7 @@ export class ContentLayoutComponent implements OnInit, OnDestroy {
     this.renderer.removeClass(this.document.body, "menu-expanded");
     this.renderer.removeClass(this.document.body, "navbar-static");
     this.renderer.removeClass(this.document.body, "menu-open");
-    this.renderer.addClass(this.document.body, "blank-page");
+    this.renderer.addClass(this.document.body, "blank-pages");
 
 
   }
@@ -75,7 +75,7 @@ export class ContentLayoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.renderer.removeClass(this.document.body, "auth-page");
+    this.renderer.removeClass(this.document.body, "auth-pages");
     if (this.layoutSub) {
       this.layoutSub.unsubscribe();
     }

@@ -110,7 +110,7 @@ export class FullLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   //adjust layout
   setMenuLayout() {
     this.overlayContent = false;
-    this.renderer.removeClass(this.document.body, "blank-page");
+    this.renderer.removeClass(this.document.body, "blank-pages");
     if (this.config.layout.menuPosition === "Top") { // Horizontal Menu
       if (this.innerWidth < 1200) { // Screen size < 1200
         this.displayOverlayMenu = true;
@@ -382,7 +382,7 @@ export class FullLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
 
-  //Add/remove classes on page scroll
+  //Add/remove classes on pages scroll
   @HostListener("window:scroll", [])
   onWindowScroll() {
     let number = this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
@@ -399,9 +399,9 @@ export class FullLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     if (number > 20) {
-      this.renderer.addClass(this.document.body, "page-scrolled");
+      this.renderer.addClass(this.document.body, "pages-scrolled");
     } else {
-      this.renderer.removeClass(this.document.body, "page-scrolled");
+      this.renderer.removeClass(this.document.body, "pages-scrolled");
     }
   }
 

@@ -1,52 +1,39 @@
-import { Router } from '@angular/router';
-import { Injectable } from '@angular/core';
-import { AngularFireAuth } from "@angular/fire/auth";
-import firebase from 'firebase/app'
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {map} from "rxjs/operators";
+import {Router} from "@angular/router";
+import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class AuthService {
-  private user: Observable<firebase.User>;
-  private userDetails: firebase.User = null;
 
-  constructor(public _firebaseAuth: AngularFireAuth, public router: Router) {
-    this.user = _firebaseAuth.authState;
-    this.user.subscribe(
-      (user) => {
-        if (user) {
-          this.userDetails = user;
+  constructor(private http: HttpClient,
+              private router: Router) {
+  }
+
+  login(username: string, password: string) {
+    const url = environment.urlBase + '/login'
+    const body = {username: username, password: password}
+    return this.http.post<any>(url, body)
+      .pipe(map(response => {
+          // login successful if there's a jwt token in the response
+          if (response && response.token) {
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('username', username);
+          }
         }
-        else {
-          this.userDetails = null;
-        }
-      }
-    );
-
-  }
-
-  signupUser(email: string, password: string) {
-    //your code for signing up the new user
-  }
-
-  signinUser(email: string, password: string) {
-    //your code for checking credentials and getting tokens for for signing in user
-    // return this._firebaseAuth.signInWithEmailAndPassword(email, password)
-
-    //uncomment above firebase auth code and remove this temp code
-    return new Promise(function(resolve, reject) {
-      setTimeout(function() {
-        resolve(true);
-      }, 1000);
-    });
-
-  }
-
-  logout() {
-    this._firebaseAuth.signOut();
-    this.router.navigate(['YOUR_LOGOUT_URL']);
+      ));
   }
 
   isAuthenticated() {
-    return true;
+    if (localStorage.getItem('token')) {
+      // logged in so return true
+      return true;
+    }
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['login'])
   }
 }

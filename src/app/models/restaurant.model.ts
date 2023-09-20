@@ -8,7 +8,7 @@ export class RestaurantModel {
       json['name'],
       json['address'],
       json['city'],
-      json['category'],
+      json['categoryId'],
       json['rating'],
       json['id'],
     );
@@ -17,7 +17,7 @@ export class RestaurantModel {
     public name: string = null,
     public address: string = null,
     public city: string = null,
-    public category: CategoryModel = null,
+    public categoryId: number = null,
     public rating: string = null,
     public id?: number,
   ) {
