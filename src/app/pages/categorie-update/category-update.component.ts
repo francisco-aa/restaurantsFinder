@@ -83,7 +83,6 @@ export class CategoryUpdateComponent implements OnInit {
 
     this.category.name = this.controls.name.value;
 
-    console.log('CATEGORIE', this.category)
     this.categoryService.update(this.category)
       .subscribe(
         c => {
