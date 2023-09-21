@@ -1,11 +1,11 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {RestaurantService} from "../../services/restaurant.service";
-import {RestaurantModel} from "../../models/restaurant.model";
-import {ActivatedRoute, Router} from "@angular/router";
-import {CategoryService} from "../../services/category.service";
-import {CategoryModel} from "../../models/category.model";
-import {Location} from "@angular/common";
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {RestaurantService} from '../../services/restaurant.service';
+import {RestaurantModel} from '../../models/restaurant.model';
+import {ActivatedRoute, Router} from '@angular/router';
+import {CategoryService} from '../../services/category.service';
+import {CategoryModel} from '../../models/category.model';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-restaurant-update',
