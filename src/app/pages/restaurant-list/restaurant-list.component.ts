@@ -1,8 +1,8 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {RestaurantService} from "../../services/restaurant.service";
-import {CategoryService} from "../../services/category.service";
-import {Router} from "@angular/router";
-import {CoreConfigService} from "../../../@core/services/config.service";
+import {RestaurantService} from '../../services/restaurant.service';
+import {CategoryService} from '../../services/category.service';
+import {Router} from '@angular/router';
+import {AuthService} from '../../shared/auth/auth.service';
 
 
 @Component({
@@ -21,7 +21,8 @@ export class RestaurantListComponent implements OnInit {
   constructor(private restaurantService: RestaurantService,
               private categoryService: CategoryService,
               private router: Router,
-              private cdr: ChangeDetectorRef) {
+              private cdr: ChangeDetectorRef,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -94,5 +95,9 @@ export class RestaurantListComponent implements OnInit {
 
   addCategory() {
     this.router.navigate(['category/new'])
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

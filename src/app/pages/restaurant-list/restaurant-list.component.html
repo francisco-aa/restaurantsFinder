@@ -3,7 +3,9 @@
     <div class="card">
       <div class="card-header"><h4 class="card-title"><i class="ft-chevrons-right mr-1"></i>Restaurants
         <i class="ft-plus ml-1 cursor-pointer" (click)="addRestaurant()" [ngbTooltip]="'Add new restaurant'"></i>
-        <i *ngIf="loading" class="ft-loader spinner ml-1"></i></h4></div>
+        <i *ngIf="loading" class="ft-loader spinner ml-1"></i>
+        <i class="ft-log-out pull-right cursor-pointer" [ngbTooltip]="'Logout'" (click)="logout()"></i>
+      </h4></div>
       <div class="card-body">
         <div class="table-responsive" *ngIf="!loading">
           <table class="table table-striped">

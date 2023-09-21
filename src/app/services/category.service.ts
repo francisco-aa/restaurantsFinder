@@ -30,16 +30,16 @@ export class CategoryService {
       );
   }
 
-  update(item): Observable<CategoryModel> {
+  update(item): Observable<any> {
     if (item?.id) {
       return this.http.put(this.urlBase + '/' + item.id, item)
         .pipe(
-          map(a => CategoryModel.fromJson(a))
+          map(a => a)
         )
     } else {
       return this.http.post(this.urlBase, item)
         .pipe(
-          map(a => CategoryModel.fromJson(a))
+          map(a => a)
         )
     }
   }
